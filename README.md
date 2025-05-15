@@ -32,17 +32,22 @@
 
 ### インストール
 
-Reactプロジェクトを作成したいディレクトリで以下コマンドを実行します。
+1. Reactプロジェクトを作成したいディレクトリで以下コマンドを実行します。
 
+```bash
 npm create vite@latest
+```
 
-コマンド実行すると、いくつか質問されるので回答します。
+２. コマンド実行すると、いくつか質問されるので回答します。
 プロジェクト名を入力します。
 
+```bash
 ? Project name: › music_app
+```
 
-フレームワークや言語を選択します。
+３. フレームワークや言語を選択します。
 
+```bash
 ? Select a framework: › - Use arrow-keys. Return to submit.
     Vanilla
     Vue
@@ -60,14 +65,17 @@ Select a variant: › - Use arrow-keys. Return to submit.
 ❯   JavaScript
     JavaScript + SWC
     Remix ↗
+```
 
-上記でReactプロジェクトのフォルダー作成されました。
+４. 上記でReactプロジェクトのフォルダー作成されました。
 以下のような表示が出る想定です。上記のコマンドを実行するとセットアップ完了します。
 
+```bash
 Done. Now run:
     cd music_app
     npm install
     npm run dev
+```
 
 ## 使用した技術・ライブラリ
 
