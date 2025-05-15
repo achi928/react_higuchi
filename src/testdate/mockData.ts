@@ -5,7 +5,7 @@ type Customer = {
   name: string
   email: string
   phone: string
-  createdAt: string
+  createdAt: Date
 }
 
 export const mockCustomers: Customer[] = Array.from({ length: 10 }, (_, i) => ({
@@ -13,5 +13,5 @@ export const mockCustomers: Customer[] = Array.from({ length: 10 }, (_, i) => ({
   name: faker.person.fullName(),
   email: faker.internet.email(),
   phone: faker.phone.number({ style: 'national' }),
-  createdAt: faker.date.past().toISOString().split('T')[0],
+  createdAt: faker.date.past(),
 }))
