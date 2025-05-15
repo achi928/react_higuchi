@@ -1,54 +1,139 @@
-# React + TypeScript + Vite
+# 顧客管理システム
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+シンプルでユーザーフレンドリーな顧客管理システムのフロントエンド実装です。このアプリケーションは、ログイン機能と顧客情報の管理機能を提供します。
 
-Currently, two official plugins are available:
+![image](https://github.com/user-attachments/assets/401329ce-02bb-4e02-99f1-a574c28d00a7)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 目次
 
-## Expanding the ESLint configuration
+- [機能概要](#機能概要)
+- [セットアップ手順](#セットアップ手順)
+- [使用した技術・ライブラリ](#使用した技術ライブラリ)
+- [実装した機能の説明](#実装した機能の説明)
+- [動作確認方法](#動作確認方法)
+- [フォルダ構成](#フォルダ構成)
+- [今後の改善点](#今後の改善点)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 機能概要
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+このアプリケーションは以下の主要機能を提供します：
+
+- シンプルなログイン画面
+- 顧客情報の一覧表示
+- 顧客情報の検索機能
+- 顧客データの並び替え機能
+
+## セットアップ手順
+
+以下の手順でアプリケーションをローカル環境で実行できます。
+
+### 前提条件
+
+- Node.js
+- npm
+
+### インストール
+
+Reactプロジェクトを作成したいディレクトリで以下コマンドを実行します。
+
+npm create vite@latest
+
+コマンド実行すると、いくつか質問されるので回答します。
+プロジェクト名を入力します。
+
+? Project name: › music_app
+
+フレームワークや言語を選択します。
+
+? Select a framework: › - Use arrow-keys. Return to submit.
+    Vanilla
+    Vue
+❯   React
+    Preact
+    Lit
+    Svelte
+    Solid
+    Qwik
+    Angular
+    Others
+Select a variant: › - Use arrow-keys. Return to submit.
+    TypeScript
+    TypeScript + SWC
+❯   JavaScript
+    JavaScript + SWC
+    Remix ↗
+
+上記でReactプロジェクトのフォルダー作成されました。
+以下のような表示が出る想定です。上記のコマンドを実行するとセットアップ完了します。
+
+Done. Now run:
+    cd music_app
+    npm install
+    npm run dev
+
+## 使用した技術・ライブラリ
+
+- **フレームワーク**: React (npm create vite@latest)
+- **UI ライブラリ**: Material-UI
+- **フォーム管理**: React Hook Form
+- **開発ツール**: Vscode
+
+## 実装した機能の説明
+
+### 1. ログイン機能
+
+- ユーザーID・パスワード入力フォーム
+- 入力バリデーション（空欄チェック）
+- エラーメッセージ表示
+
+### 2. 顧客一覧画面
+
+- 顧客情報の表形式での表示
+  - 顧客名
+  - メールアドレス
+  - 電話番号
+  - 登録日
+- **検索機能**
+  - 顧客名、電話番号、メールアドレスによる絞り込み検索
+  - リアルタイム検索結果表示
+- **並び替え機能**
+  - 名前順（昇順・降順）
+  - 登録日順（昇順・降順）
+
+### 3. デザイン
+
+- Material-UIを使用した一貫性のあるデザイン
+
+## 動作確認方法
+
+### ログイン画面
+
+1. アプリケーションを起動すると、最初にログイン画面が表示されます
+2. 情報入力でログインできます：
+3. 入力欄を空にしてログインボタンを押すと、エラーメッセージが表示されます
+
+### 顧客一覧画面
+
+1. ログイン後、自動的に顧客一覧画面に遷移します
+2. 画面上部の検索バーに顧客名、電話番号、メールアドレスを入力して、検索できます
+3. カラムヘッダーをクリックすると、そのカラムでデータを並び替えることができます
+
+## フォルダ構成
+
+```
+src/
+├── pages/
+│   ├── Login/         # ログイン関連コンポーネント
+│   ├── CustomerList/  # 顧客一覧関連コンポーネント
+├── testdate/
+│   ├── mockDate/      # 顧客テストデータ
+└── App.js             # アプリケーションのルート
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 今後の改善点
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- 顧客詳細画面の実装
+- 画面の中央寄せ
+- 顧客データの追加・編集・削除機能
+- バックエンドとの連携（API実装）
+- ユニットテストの追加
