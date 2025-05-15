@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { ErrorMessage } from '@hookform/error-message';
+import { Button, TextField, Typography, Container, Box } from '@mui/material';
 
 type FormData = {
   username: string;
@@ -18,18 +18,56 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label>ユーザーID</label>
-      <input {...register('username', { required: 'ユーザーIDは必須です' })} />
-      <ErrorMessage errors={errors} name="username" render={({ message }) => <p>{message}</p>} />
+    <Container maxWidth="sm" style={{ marginTop: '50px' }}>
+      <Box 
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: '#fff',
+          padding: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+        }}
+      >
+        <Typography variant="h4" component="h1" gutterBottom>
+          ログイン
+        </Typography>
 
-      <label>パスワード</label>
-      <input type="password" {...register('password', { required: 'パスワードは必須です' })} />
-      <ErrorMessage errors={errors} name="password" render={({ message }) => <p>{message}</p>} />
+        <form onSubmit={handleSubmit(onSubmit)} style={{ width: '100%' }}>
+          <TextField
+            label="ユーザーID"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            {...register('username', { required: 'ユーザーIDは必須です' })}
+            error={!!errors.username}
+            helperText={errors.username ? errors.username.message : ''}
+          />
 
-      <button type="submit">ログイン</button>
-    </form>
+          <TextField
+            label="パスワード"
+            fullWidth
+            variant="outlined"
+            margin="normal"
+            type="password"
+            {...register('password', { required: 'パスワードは必須です' })}
+            error={!!errors.password}
+            helperText={errors.password ? errors.password.message : ''}
+          />
 
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            sx={{ marginTop: 2 }}
+          >
+            ログイン
+          </Button>
+        </form>
+      </Box>
+    </Container>
   );
 };
 
